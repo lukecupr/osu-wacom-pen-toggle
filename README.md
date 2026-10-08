@@ -65,4 +65,4 @@ This tool bridges that gap by reading osu! state in real time:
 ## Credits
 
 - **[shavit](https://github.com/shavitush)** — For creating the custom 1000 Hz Wacom firmwares.
-- **[Piotrekol](https://github.com/Piotrekol)** — For **[OsuMemoryDataProvider](https://github.com/Piotrekol/ProcessMemoryDataFinder/tree/master/OsuMemoryDataProvider)**. (used for state detection)
+- **[Piotrekol](https://github.com/Piotrekol)** — For **[OsuMemoryDataProvider](https://github.com/Piotrekol/ProcessMemoryDataFinder/tree/master/OsuMemoryDataProvider)**.
