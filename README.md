@@ -8,7 +8,7 @@ Automatically toggles the **Pressure & Buttons** setting on Wacom tablets runnin
 
 ## The Problem
 
-On Wacom tablets running shavit's 1000 Hz custom firmware, reading pen pressure results in frequently delayed / dropped reports, or on some firmware versions adds smoothing to hide it.
+On Wacom tablets running shavit's 1000 Hz custom firmware, reading pen pressure results in frequently delayed / dropped reports, or in some firmware versions adds smoothing to hide it.
 
 Disabling pressure and buttons in the firmware improves this, but leaves the pen basically unusable in menus, song select, or beatmap intros and outros.
 
