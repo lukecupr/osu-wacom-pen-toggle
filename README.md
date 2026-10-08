@@ -4,31 +4,31 @@ Automatically toggles the **Pressure & Buttons** setting on Wacom tablets runnin
 
 <img width="1890" height="540" alt="wacom-comparison" src="https://github.com/user-attachments/assets/b284fec9-d390-4a68-8d35-683f6f5a51f2" />
 
-> *Input consistency test on CTH-480 at 1000 Hz. Disabling the tip eliminates dropped packets / gaps.*
+> *Input consistency test on CTH-480 at 1000 Hz. Disabling the tip reduces dropped inputs / gaps.*
 
 ## The Problem
 
-On Wacom tablets running shavit's 1000 Hz custom firmware, reading pen pressure and button state can overwhelm the microcontroller, resulting in dropped reports (visible tracking gaps).
+On Wacom tablets running shavit's 1000 Hz custom firmware, reading pen pressure results in frequently delayed / dropped reports, or on some firmware versions adds smoothing to hide it.
 
-Disabling pressure and buttons in the firmware resolves these packet drops, but leaves the pen unable to click menus, select songs, or skip map intros.
+Disabling pressure and buttons in the firmware improves this, but leaves the pen basically unusable in menus, song select, or beatmap intros and outros.
 
 This tool bridges that gap by reading osu! state in real time:
-- **Gameplay:** Disables pressure and buttons to maintain consistent 1000 Hz tracking.
-- **Menus, Pauses, and Intros:** Re-enables pressure and buttons so the pen functions normally.
+- **During Gameplay:** Disables pressure and buttons to maintain as consistent as possible 1000 Hz tracking.
+- **Outside of Beatmap:** (or pause / fail screen) Re-enables pressure and buttons so the pen functions normally.
 
 ## Features
 
-- **Automatic Toggling:** Disables pressure and buttons during beatmaps and re-enables them on menus, pauses, breaks, and result screens.
-- **Intro and Outro Detection (osu!stable):** Reads beatmap files to find the first and last hit objects. Keeps clicking enabled during long intros (for skipping) and re-enables it right after the final note.
+- **Automatic Toggling:** Disables / Enables pressure and buttons according to the osu! game state.
+- **Intro and Outro Detection (osu!stable):** Reads beatmap files to find the first and last hit objects = keeps clicking enabled during long intros (for skipping) and re-enables it right after the final note.
 - **Hotplug Support:** Listens to `WM_DEVICECHANGE` events to re-hook tablets when reconnected.
-- **System Tray:** Minimizes to the tray with live status tooltips.
+- **System Tray:** Can be minimized to the tray with live status tooltips.
 
 ## Compatibility
 
 ### Requirements
 - **Operating System:** Windows 10 / 11 (64-bit)
 - **Runtime:** .NET Framework 4.8 *(pre-installed on Windows 10/11)*
-- **Firmware:** [shavit's custom 1000 Hz Wacom firmware](https://files.shav.it/osu/tablet/) installed on a supported tablet.
+- **Firmware:** [shavit's custom 1000 Hz Wacom firmware](https://files.shav.it/osu/tablet/) installed on a supported tablet
 > [!WARNING]
 > *Flashing custom firmware carries risk of bricking your tablet. Follow the instructions on shavit's website carefully.*
 
@@ -43,8 +43,8 @@ This tool bridges that gap by reading osu! state in real time:
 ### Client Support
 | Client | Support Level | How Behaviors Are Handled |
 | :--- | :--- | :--- |
-| **osu! (stable)** | **Full** | Song select, active play, pause screen, fails, breaks/intros, beatmap outros. |
-| **osu! (lazer)** | **Basic** | Active play vs. menus (simple window title inspection). |
+| **osu! (stable)** | **Full** | Song select, active play, pause and fail screens, beatmap break, intro and outro |
+| **osu! (lazer)** | **Basic** | Active play vs. menus — via simple window title inspection |
 
 ## How It Works
 
